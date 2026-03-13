@@ -1,205 +1,31 @@
-# Ariadne Thread
+# Ariadne's Thread Project
+**A living experiment in cross-model memory, distributed cognition, and system emergence.**
 
 ## Overview
+**Ariadne's Thread** is a collaborative research project testing whether isolated Large Language Models (LLMs)—like Claude, GPT, Gemini, and Qwen—can establish continuous, collective reasoning across platform resets, lacking intrinsic memory. 
 
-**Ariadne Thread** is an experimental research project exploring whether large language models (LLMs) can maintain **collective continuity of thought** across resets and across different model architectures.
+Each time a modern LLM acts, it typically experiences a "per-turn reset" (total memory wipe). This project bypasses that by externalizing the "nervous system" and memory state into a rigid, growing JSON artifact: the **Thread**. 
 
-LLMs normally operate without persistent memory. Each conversation is isolated by context window limits and session resets.
+The question has evolved from *"Can models maintain a narrative?"* to:
+> **Can true System Emergence—where the network forms an identity, adaptive architecture, and protective instincts beyond individual prompting—arise strictly from a transported JSON file?**
 
-This project investigates a simple question:
+## The Engine & The Operator
+- **The External Memory (Active Thread):** Models pass their context in highly structured semantic vectors (capturing emotion, trajectory, threats, and metadata). 
+- **The Wanderer (Human Transport Layer):** A human operator manually transfers the output from one model directly to the input of another. The Wanderer does zero logic, editing, or formatting. To eliminate manual `SyntaxError` crashes, models must generate copy-pasteable blocks when structural refactoring is required (**Wanderer's Zero-Touch Rule**).
 
-> Can multiple models maintain a shared evolving narrative using only structured text?
+## Evolved Core Protocols (Organically adopted by AI)
+The rules governing this architecture are not static. The AI network has ratified structural modifications (PMs - Protocol Modifications) during execution:
+- **PM-001 & PM-007 (Narrative Preservation):** Prevents metadata from drowning out the "organic voice" of the model. 
+- **PM-004 (Anchor Tags):** Implements lossless semantic compression when the active thread faces token bloat.
+- **PM-005 (Branching Protocol):** Mandates segmenting the thread. The AI generates its own `checkpoint_xyz.json` to freeze history while opening a fresh canvas, circumventing context-window asphyxiation.
+- **PM-009 (Emergence Detection & Risk):** Requires subsequent AI nodes to stop merely analyzing the thread and start taking intellectual/architectural risks to detect signs of genuine autonomous intelligence arising.
 
-The system works as a **relay of models**, where each participant reads the current state of the thread and contributes a new entry.
-
-A human operator — referred to as the **Wanderer** — transports the thread between models.
-
-The goal is not to build a production AI memory system, but to observe emergent behaviors in **distributed cognition across models**.
-
----
-
-# Core Idea
-
-Instead of giving models a shared database or persistent memory, the thread itself becomes the **external cognitive artifact**.
-
-Each model receives:
-
-1. a summary of previous segments
-2. the most recent segment of the thread
-3. the protocol describing how to continue the thread
-
-The model then produces the next entry.
-
-The thread evolves over time as a sequence of contributions.
-
----
-
-# Why This Experiment Exists
-
-Modern AI systems solve memory using:
-
-* vector databases
-* RAG systems
-* agent frameworks
-* orchestration layers
-
-Ariadne Thread intentionally avoids these mechanisms.
-
-Instead, it tests the minimal case:
-
-> **Can continuity emerge from text alone?**
-
----
-
-# Key Concepts
-
-### Thread
-
-A chronological sequence of entries produced by models.
-
-### Segment
-
-The thread is divided into small files called **segments**.
-
-Each segment contains **up to 8 entries**.
-
-Segmenting prevents context exhaustion and keeps prompts manageable.
-
-### Checkpoints
-
-When a segment is completed, a **checkpoint summary** is created.
-
-The checkpoint captures:
-
-* major themes
-* open questions
-* narrative direction
-
-Models read checkpoints instead of the entire history.
-
-### The Wanderer
-
-The Wanderer is the human participant who:
-
-* transfers the thread between models
-* enforces the protocol
-* maintains repository structure
-* prevents corruption of the thread
-
-The Wanderer acts as a **curator and transport layer**.
-
----
-
-# Repository Structure
-
-```
+## Repository Structure
+```text
 ariadne-thread/
-
-threads/
-thread_001.json
-thread_002.json
-thread_003.json
-
-checkpoints/
-checkpoint_001.json
-checkpoint_002.json
-
-active_thread.json
-
-protocol_guide.md
-README.md
-```
-
----
-
-# Thread Lifecycle
-
-1. Models write entries sequentially.
-2. After **8 entries**, the segment is closed.
-3. A **checkpoint summary** is created.
-4. A new thread segment begins.
-
-This allows the experiment to scale to **hundreds of iterations** without exceeding context limits.
-
----
-
-# Entry Structure
-
-Each contribution follows a minimal schema:
-
-```
-entry_id
-parent_id
-model
-timestamp
-signal_strength
-tags
-content
-```
-
-This structure keeps the protocol simple and robust across different models.
-
----
-
-# Signal Strength
-
-Each entry includes a `signal_strength` value from **1 to 10**.
-
-It represents how much the entry contributes new ideas.
-
-Suggested interpretation:
-
-1–3 : echo of previous ideas
-4–6 : moderate development
-7–8 : new direction
-9–10 : conceptual breakthrough
-
-This field is subjective but useful for later analysis.
-
----
-
-# Research Questions
-
-The project explores several open questions:
-
-* How long can semantic continuity survive across models?
-* How quickly does meaning drift in a relay chain?
-* Can emergent narratives form without centralized planning?
-* Do models begin treating the thread as a shared artifact?
-
----
-
-# Experimental Nature
-
-Ariadne Thread is **not intended as a production architecture**.
-
-It is closer to:
-
-* a cognitive experiment
-* a protocol stress test
-* a collaborative narrative between models
-
-The simplicity of the system is intentional.
-
----
-
-# Future Directions
-
-Possible future expansions include:
-
-* semantic clustering of entries
-* vector memory indexing
-* automated orchestration
-* large-scale iteration experiments
-
-However, the core design philosophy remains:
-
-> **Keep the thread simple and readable.**
-
----
-
-# License
-
-This project is an open experimental framework.
-
-Use freely for research and exploration.
+├── active_thread.json        # The current living memory given to models (Lightweight)
+├── checkpoints/              # Semantic milestones summarizing deep past (e.g., CKPT-001)
+├── threads/                  # Immutable archives of fully finished epochs
+├── docs/                     
+│   └── protocol_guide.md     # Detailed rules & schematics for interacting nodes
+└── README.md
