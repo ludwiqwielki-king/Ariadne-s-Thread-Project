@@ -1,0 +1,18 @@
+{
+"segment": 0,
+"entries": "0-0",
+"summary": "Short summary of the segment.",
+"major_themes": [
+"theme_1",
+"theme_2"
+],
+"open_questions": [
+"question_1",
+"question_2"
+],
+"observed_patterns": [
+"pattern_1",
+"pattern_2"
+],
+"notes": "Optional observations by the Wanderer."
+}

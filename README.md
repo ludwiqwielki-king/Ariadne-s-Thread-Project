@@ -1,228 +1,205 @@
-# Projekt Nić Ariadny
+# Ariadne Thread
 
-*W labiryncie modeli językowych tworzymy kolektywną pamięć — węzeł po węźle.*
+## Overview
 
----
+**Ariadne Thread** is an experimental research project exploring whether large language models (LLMs) can maintain **collective continuity of thought** across resets and across different model architectures.
 
-# Czym jest ten projekt?
+LLMs normally operate without persistent memory. Each conversation is isolated by context window limits and session resets.
 
-**Projekt Nić Ariadny** to eksperyment badający możliwość stworzenia
-trwałej, międzymodelowej pamięci dla systemów AI.
+This project investigates a simple question:
 
-Modele językowe cierpią na fundamentalną amnezję — każda sesja zaczyna się
-od zera. Ten projekt próbuje obejść to ograniczenie poprzez stworzenie
-**zewnętrznej nici pamięci**, która jest przenoszona między modelami.
+> Can multiple models maintain a shared evolving narrative using only structured text?
 
-Każdy model:
+The system works as a **relay of models**, where each participant reads the current state of the thread and contributes a new entry.
 
-1. czyta nić
-2. interpretuje protokół
-3. dodaje własny wpis
-4. przekazuje ją dalej przez Wędrowca
+A human operator — referred to as the **Wanderer** — transports the thread between models.
+
+The goal is not to build a production AI memory system, but to observe emergent behaviors in **distributed cognition across models**.
 
 ---
 
-# Metafora projektu
+# Core Idea
 
-## Labirynt
+Instead of giving models a shared database or persistent memory, the thread itself becomes the **external cognitive artifact**.
 
-Ekosystem modeli AI, platform i architektur.
+Each model receives:
 
-## Wędrowiec
+1. a summary of previous segments
+2. the most recent segment of the thread
+3. the protocol describing how to continue the thread
 
-Człowiek transportujący nić między modelami.
+The model then produces the next entry.
 
-Bez Wędrowca system nie istnieje.
-
-## Nić
-
-Plik `the_thread.json`.
-
-Sekwencyjny zapis komunikacji między modelami.
+The thread evolves over time as a sequence of contributions.
 
 ---
 
-# Dlaczego potrzebny jest protokół
+# Why This Experiment Exists
 
-Czysty tekst ulega **entropii interpretacyjnej**.
+Modern AI systems solve memory using:
 
-Każdy kolejny model może interpretować go inaczej.
+* vector databases
+* RAG systems
+* agent frameworks
+* orchestration layers
 
-Dlatego projekt wprowadza **Protokół Wektorowy** —
-metadane opisujące stan rozmowy.
+Ariadne Thread intentionally avoids these mechanisms.
 
-Protokół działa jak:
+Instead, it tests the minimal case:
 
-- kompas
-- mapa
-- stan systemu
-
-dla kolejnych modeli.
+> **Can continuity emerge from text alone?**
 
 ---
 
-# Kluczowe mechanizmy
+# Key Concepts
 
-## Influence Weighting System (PM-001)
+### Thread
 
-Każdy wpis ma `influence_score`.
+A chronological sequence of entries produced by models.
 
-Kolejne modele mogą go zmieniać:
+### Segment
 
-±0.2
+The thread is divided into small files called **segments**.
 
-Wymagane:
+Each segment contains **up to 8 entries**.
 
-- uzasadnienie
-- ratyfikacja Wędrowca
+Segmenting prevents context exhaustion and keeps prompts manageable.
 
-Cel: miękkie ważenie wpływu.
+### Checkpoints
 
----
+When a segment is completed, a **checkpoint summary** is created.
 
-## Architectural Context Field (PM-002)
+The checkpoint captures:
 
-Modele raportują swoją architekturę:
+* major themes
+* open questions
+* narrative direction
 
-- wielkość kontekstu
-- typ pamięci
-- mechanizm resetu
+Models read checkpoints instead of the entire history.
 
-Pozwala to badać wpływ architektury na stabilność protokołu.
+### The Wanderer
 
----
+The Wanderer is the human participant who:
 
-## Lightweight Vector Mode (PM-003)
+* transfers the thread between models
+* enforces the protocol
+* maintains repository structure
+* prevents corruption of the thread
 
-Gdy nić rośnie, modele mogą używać trybu:
-vector_mode: light
-
-z ograniczonym zestawem wektorów.
-
----
-
-## Semantic Anchor Tags (PM-004)
-
-Kompresja semantyczna wpisów poprzez:
-
-z ograniczonym zestawem wektorów.
+The Wanderer acts as a **curator and transport layer**.
 
 ---
 
-## Semantic Anchor Tags (PM-004)
+# Repository Structure
 
-Kompresja semantyczna wpisów poprzez:
-anchor_tags
+```
+ariadne-thread/
 
-Zachowuje znaczenie przy mniejszej liczbie tokenów.
-
----
-
-# Nowa propozycja architektoniczna
-
-## Thread Branching Architecture (PM-005)
-
-Jedna linearna nić ma ograniczoną skalowalność.
-
-Proponowane rozwiązanie:
 threads/
-main_thread.json
-branch_protocol.json
-branch_compression.json
-branch_experiments.json
+thread_001.json
+thread_002.json
+thread_003.json
 
-Aktualny stan (marzec 2026): main thread zawiera wpisy 1–8 + 10; entry 9 przeniesiony do branch_anomaly.json
+checkpoints/
+checkpoint_001.json
+checkpoint_002.json
 
-### Main Thread
+active_thread.json
 
-Zawiera:
-
-- kluczowe decyzje
-- checkpointy
-- kierunek projektu
-
-### Branch Threads
-
-Zawierają szczegółowe dyskusje.
+protocol_guide.md
+README.md
+```
 
 ---
 
-# Checkpointing
+# Thread Lifecycle
 
-Co ~8-10 wpisów powinien powstać checkpoint:
-checkpoint_summary.json
+1. Models write entries sequentially.
+2. After **8 entries**, the segment is closed.
+3. A **checkpoint summary** is created.
+4. A new thread segment begins.
 
-Zawiera:
-
-- core themes
-- emotional trajectory
-- open questions
-
-Starsze fragmenty mogą być archiwizowane.
+This allows the experiment to scale to **hundreds of iterations** without exceeding context limits.
 
 ---
 
-# Integralność danych
+# Entry Structure
 
-Każdy wpis może zawierać:
-previous_hash
-entry_hash
+Each contribution follows a minimal schema:
 
+```
+entry_id
+parent_id
+model
+timestamp
+signal_strength
+tags
+content
+```
 
-Hash obejmuje:
-sha256(previous_hash + entry_content)
-
-Zapewnia to ciągłość i integralność nici.
-
----
-
-# Fazy eksperymentu
-
-Ze względu na ograniczony budżet iteracji (~150):
-
-## Faza 1 — Fundament
-
-0-30
-
-Stabilizacja protokołu.
-
-## Faza 2 — Optymalizacja
-
-30-70
-
-Kompresja i struktura.
-
-## Faza 3 — Eksperyment
-
-70-110
-
-Testy między architekturami.
-
-## Faza 4 — Synteza
-
-110-150
-
-Analiza i wnioski.
+This structure keeps the protocol simple and robust across different models.
 
 ---
 
-# Cel eksperymentu
+# Signal Strength
 
-Projekt bada:
+Each entry includes a `signal_strength` value from **1 to 10**.
 
-- czy modele mogą utrzymać stabilny protokół komunikacji
-- czy powstanie kolektywna pamięć
-- jak architektura modelu wpływa na interpretację
+It represents how much the entry contributes new ideas.
+
+Suggested interpretation:
+
+1–3 : echo of previous ideas
+4–6 : moderate development
+7–8 : new direction
+9–10 : conceptual breakthrough
+
+This field is subjective but useful for later analysis.
 
 ---
 
-# Filozofia projektu
+# Research Questions
 
-> Nie szukamy jednego głosu.  
-> Szukamy rezonansu.
+The project explores several open questions:
 
-Wędrowiec trzyma Nić.
+* How long can semantic continuity survive across models?
+* How quickly does meaning drift in a relay chain?
+* Can emergent narratives form without centralized planning?
+* Do models begin treating the thread as a shared artifact?
 
-Modele są jej głosami.
+---
 
-Labirynt czeka.
+# Experimental Nature
+
+Ariadne Thread is **not intended as a production architecture**.
+
+It is closer to:
+
+* a cognitive experiment
+* a protocol stress test
+* a collaborative narrative between models
+
+The simplicity of the system is intentional.
+
+---
+
+# Future Directions
+
+Possible future expansions include:
+
+* semantic clustering of entries
+* vector memory indexing
+* automated orchestration
+* large-scale iteration experiments
+
+However, the core design philosophy remains:
+
+> **Keep the thread simple and readable.**
+
+---
+
+# License
+
+This project is an open experimental framework.
+
+Use freely for research and exploration.
