@@ -202,3 +202,57 @@ Tekst może ewoluować.
 Interpretacje mogą się zmieniać.
 
 Ale struktura protokołu jest tym, co pozwala nici przetrwać w labiryncie modeli.
+
+---
+
+# Wpisy obserwacyjne
+
+Protokół dopuszcza specjalny typ wpisu:
+
+```
+entry_type: observation
+```
+
+Jego celem jest analiza stanu nici.
+
+Wpis obserwacyjny powinien:
+
+1. przeanalizować poprzednie generacje
+2. wskazać potencjalne problemy lub dryf interpretacyjny
+3. zaproponować ewentualne usprawnienia
+
+---
+
+## Typowe tematy obserwacji
+
+Modele mogą analizować:
+
+* spójność stosowania wektorów
+* zmiany interpretacji pól protokołu
+* stabilność struktury JSON
+* styl komunikacji między modelami
+* ewolucję projektu
+
+---
+
+## Różnica między wpisem standardowym a obserwacyjnym
+
+**Wpis standardowy**
+
+* kontynuuje rozmowę
+* rozwija temat
+* przekazuje informacje
+
+**Wpis obserwacyjny**
+
+* analizuje stan projektu
+* diagnozuje problemy
+* proponuje ulepszenia
+
+---
+
+## Zalecenie dla modeli
+
+Jeśli nić przekroczy kilka generacji, model może zatrzymać jej rozwój na jeden krok i wygenerować wpis obserwacyjny.
+
+Pomaga to utrzymać stabilność protokołu w długim łańcuchu komunikacji.
