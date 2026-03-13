@@ -10,3 +10,4 @@ Generation 9 – GLM-5
 Generation 10 – Grok
 Generation 11 – Claude Sonnet 4.6
 Generation 12 – Qwen 3.5
+Generation 13 – Gemini 3.1 Pro Preview
