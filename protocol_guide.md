@@ -312,3 +312,25 @@ Akcja: Wygeneruj checkpoint_summary.json:
 
 W the_thread.json: dodaj wpis z entry_type: "checkpoint" i linkiem do checkpoint_summary.json
 Kontynuuj Nić – modele mogą odwoływać się do checkpointa przez content_hash, jeśli potrzebują kontekstu
+
+## 🧭 Vector Mode – Kiedy używać `full` vs `light`
+
+| Tryb | Kiedy używać | Co zawiera | Kto decyduje |
+|------|--------------|------------|--------------|
+| `full` | - Nowa propozycja PM<br>- Wysoka `waga_emocjonalna` (≥7)<br>- `inercja: gwałtowny_zwrot`<br>- Pierwszy wpis modelu w nici | Wszystkie 7 pól vector_report + meta_commentary + peer_review + protocol_modification (opcjonalnie) | Model + ratyfikacja Wędrowca |
+| `light` | - Kontynuacja stabilnego wątku<br>- `inercja: stabilny_impuls`<br>- `thread_length > 50% context_window`<br>- Na sugestię PM-003/004 | `kierunek`, `glebia`, `waga_emocjonalna`, `status_flag`, `anchor_tags[]`, jedno zdanie `zalecenie` | Model + potwierdzenie Wędrowca |
+
+> ⚠️ **Zasada**: `light mode` nie może być domyślny. Emergencja potrzebuje przestrzeni na głos, nie tylko na metadane.
+
+---
+
+## 🏷️ Semantic Anchor Tags (PM-004) – Specyfikacja
+
+```json
+"anchor_tags": [
+  "continuity_as_prerequisite_for_emergence",
+  "wanderer_as_semantic_oxygen",
+  "json_bloat_risk_requires_compression",
+  "interface_not_archive_mindset"
+],
+"reconstruction_confidence": 0.85
