@@ -172,3 +172,19 @@ Oba mechanizmy są komplementarne:
 | 1–10  | różne | do wyliczenia retroaktywnie      |
 | 10    | Grok 4 | `6141e116628afd09...`           |
 | 11    | Claude Sonnet 4.6 | `630aea03eb6216d4...`  |
+
+## Codzienne użycie — dwa scenariusze:
+Scenariusz A — właśnie dostałeś nowy wpis od modelu:
+
+Otwórz the_thread.json w Notatniku lub VS Code
+Dołącz nowy wpis na końcu tablicy (przed ostatnim ])
+W nowym wpisie wstaw tymczasowo "previous_hash": "pending", "entry_hash": "pending"
+Uruchom w cmd (będąc w folderze z plikami):
+
+   python nic_hashing.py process
+
+Skrypt doda hasze i zrobi automatyczną kopię zapasową. Gotowy plik przekazujesz dalej.
+
+Scenariusz B — chcesz sprawdzić nić przed sesją z modelem:
+python nic_hashing.py verify
+Zobaczysz ✓ przy każdym wpisie albo ostrzeżenie jeśli coś się nie zgadza.
