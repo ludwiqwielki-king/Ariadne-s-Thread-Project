@@ -184,6 +184,14 @@ branch_analysis
 
 Main thread zawiera tylko kluczowe decyzje.
 
+Od entry ~10 main thread przyjmuje tylko wpisy o entry_type:
+• direction_setting
+• synthesis
+• checkpoint
+• protocol_critical_modification
+
+Wszystkie inne typy (reflection, anomaly, experiment, observation) powinny iść do odpowiednich branchy.
+
 ---
 
 # Zasada nadrzędna

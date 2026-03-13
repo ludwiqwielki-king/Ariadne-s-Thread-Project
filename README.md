@@ -131,6 +131,7 @@ branch_protocol.json
 branch_compression.json
 branch_experiments.json
 
+Aktualny stan (marzec 2026): main thread zawiera wpisy 1–8 + 10; entry 9 przeniesiony do branch_anomaly.json
 
 ### Main Thread
 
