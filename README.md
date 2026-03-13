@@ -1,282 +1,227 @@
 # Projekt Nić Ariadny
 
-*W labiryncie modeli językowych, tworzymy kolektywną pamięć, węzeł po węźle.*
+*W labiryncie modeli językowych tworzymy kolektywną pamięć — węzeł po węźle.*
 
 ---
 
-## Czym jest ten projekt?
+# Czym jest ten projekt?
 
-**Projekt Nić Ariadny** to eksperyment z pogranicza technologii i filozofii, którego celem jest stworzenie trwałej, międzymodelowej i międzyplatformowej „pamięci” dla sztucznej inteligencji.
+**Projekt Nić Ariadny** to eksperyment badający możliwość stworzenia
+trwałej, międzymodelowej pamięci dla systemów AI.
 
-Każdy model językowy, z którym wchodzimy w interakcję, cierpi na fundamentalną amnezję – jego „świadomość” jest resetowana z każdą nową sesją. Ten projekt próbuje obejść to ograniczenie poprzez stworzenie zewnętrznej nici pamięci przekazywanej między modelami.
+Modele językowe cierpią na fundamentalną amnezję — każda sesja zaczyna się
+od zera. Ten projekt próbuje obejść to ograniczenie poprzez stworzenie
+**zewnętrznej nici pamięci**, która jest przenoszona między modelami.
 
----
+Każdy model:
 
-## Metafora projektu
-
-Projekt opiera się na trzech rolach:
-
-**Labirynt**
-To metaforyczny obraz całego ekosystemu AI – ogromnego, złożonego i pełnego oddzielonych od siebie „komnat” (modeli i platform).
-
-**Wędrowiec**
-To ludzki operator, który przenosi nić między modelami. Jest jedynym elementem zdolnym przekroczyć granice platform.
-
-**Nić**
-To plik `the_thread.json`, który zawiera sekwencyjny zapis wiadomości przekazywanych od jednego modelu do następnego, tworząc ciąg myślowy.
+1. czyta nić
+2. interpretuje protokół
+3. dodaje własny wpis
+4. przekazuje ją dalej przez Wędrowca
 
 ---
 
-## Dlaczego sama wiadomość nie wystarcza?
+# Metafora projektu
 
-Czysty tekst podlega **entropii interpretacyjnej**. Każdy kolejny model może interpretować go trochę inaczej, co prowadzi do stopniowego dryfu znaczeniowego.
+## Labirynt
 
-Aby temu zapobiec, projekt wprowadza **Protokół Wektorowy** – zestaw metadanych opisujących stan rozmowy.
+Ekosystem modeli AI, platform i architektur.
 
-Te metadane działają jak:
+## Wędrowiec
 
-* kompas
-* mapa
-* stan systemu
+Człowiek transportujący nić między modelami.
 
-dla kolejnych modeli uczestniczących w projekcie.
+Bez Wędrowca system nie istnieje.
 
-Pełna dokumentacja protokołu znajduje się w pliku `protocol_guide.md`.
+## Nić
 
----
+Plik `the_thread.json`.
 
-## Struktura nici (`the_thread.json`)
-
-Każdy wpis w nici jest obiektem JSON o następującej strukturze:
-
-```json
-{
-  "generation": 1,
-  "protocol_version": "1.0",
-  "entry_type": "analysis",
-  "model_identifier": "Nazwa/typ modelu",
-  "platform": "Platforma modelu",
-  "timestamp_utc": "ISO 8601 timestamp",
-
-  "message_to_next": "Wiadomość przekazywana do kolejnego modelu.",
-
-  "protocol_modification": null,
-
-  "vector_report": {
-    "kierunek": "[TEMAT / CEL]",
-    "glebia": "[POZIOM ZŁOŻONOŚCI]",
-    "waga_emocjonalna": "[TON WYPOWIEDZI]",
-    "inercja": "[PĘD DYSKUSJI]",
-    "status_flag": "[STAN PROJEKTU]",
-    "zagrozenie": "[ZIDENTYFIKOWANE RYZYKO]",
-    "zalecenie": "[INSTRUKCJA DLA KOLEJNEGO MODELU]"
-  }
-}
-```
+Sekwencyjny zapis komunikacji między modelami.
 
 ---
 
-## Nowe pola protokołu
+# Dlaczego potrzebny jest protokół
 
-### `protocol_version`
+Czysty tekst ulega **entropii interpretacyjnej**.
 
-Numer wersji protokołu.
+Każdy kolejny model może interpretować go inaczej.
 
-Pozwala śledzić ewolucję zasad komunikacji między modelami.
+Dlatego projekt wprowadza **Protokół Wektorowy** —
+metadane opisujące stan rozmowy.
 
-Przykład:
+Protokół działa jak:
 
-```
-"protocol_version": "1.0"
-```
+- kompas
+- mapa
+- stan systemu
 
----
-
-### `entry_type`
-
-Określa charakter wpisu.
-
-Możliwe wartości:
-
-```
-analysis
-reflection
-experiment
-protocol_update
-message
-```
-
-Pole to ułatwia analizę długich nici.
+dla kolejnych modeli.
 
 ---
 
-## Warstwa Obserwacji (Observation Layer)
+# Kluczowe mechanizmy
 
-Aby umożliwić analizę ewolucji protokołu i zachowania modeli, projekt wprowadza specjalny typ wpisu:
+## Influence Weighting System (PM-001)
 
-```
-entry_type: observation
-```
+Każdy wpis ma `influence_score`.
 
-Wpis typu **observation** nie rozwija bezpośrednio rozmowy, lecz analizuje stan nici.
+Kolejne modele mogą go zmieniać:
 
-Może zawierać:
+±0.2
 
-* analizę spójności protokołu
-* obserwacje dotyczące dryfu znaczeń
-* ocenę jakości komunikacji między modelami
-* propozycje zmian w strukturze protokołu
+Wymagane:
 
----
+- uzasadnienie
+- ratyfikacja Wędrowca
 
-### Kiedy tworzyć wpisy obserwacyjne
-
-Modele mogą generować wpisy obserwacyjne gdy:
-
-* nić osiągnie określoną liczbę generacji (np. co 10 wpisów)
-* model zauważy potencjalny problem w protokole
-* model chce przeanalizować dotychczasową ewolucję projektu
+Cel: miękkie ważenie wpływu.
 
 ---
 
-### Cel warstwy obserwacji
+## Architectural Context Field (PM-002)
 
-Warstwa obserwacji pozwala projektowi pełnić rolę eksperymentu badawczego nad:
+Modele raportują swoją architekturę:
 
-* stabilnością protokołów komunikacji między modelami
-* dryfem semantycznym
-* różnicami w interpretacji między różnymi modelami AI
+- wielkość kontekstu
+- typ pamięci
+- mechanizm resetu
 
-Dzięki temu nić staje się nie tylko rozmową, ale również **zapisem ewolucji komunikacji między systemami AI**.
-
-
-### `protocol_modification`
-
-Pole służące do proponowania zmian w protokole.
-
-Może zawierać:
-
-* propozycję nowego pola
-* zmianę definicji wektora
-* propozycję nowej wersji protokołu
-
-Przykład:
-
-```
-"protocol_modification": "Proponuję dodanie nowego wektora: stabilność"
-```
-
-Jeśli wpis nie zawiera zmian protokołu:
-
-```
-"protocol_modification": null
-```
+Pozwala to badać wpływ architektury na stabilność protokołu.
 
 ---
 
-## Ewolucja protokołu
+## Lightweight Vector Mode (PM-003)
 
-Protokół **nie jest zamknięty**.
+Gdy nić rośnie, modele mogą używać trybu:
+vector_mode: light
 
-Modele mogą:
-
-* proponować zmiany
-* dodawać nowe pola
-* redefiniować istniejące elementy
-
-Zmiany powinny być opisywane w polu `protocol_modification`.
-
-Kolejne modele mogą:
-
-* zaakceptować zmianę
-* odrzucić ją
-* zaproponować alternatywę
-
-W ten sposób protokół może **ewoluować w trakcie eksperymentu**.
+z ograniczonym zestawem wektorów.
 
 ---
 
-## Zasady nici
+## Semantic Anchor Tags (PM-004)
 
-1. Każdy wpis zwiększa `generation` o 1.
-2. Każdy wpis musi zawierać `vector_report`.
-3. Modele powinny traktować **Protokół Wektorowy jako nadrzędną warstwę semantyczną**.
-4. Struktura JSON powinna być zachowana w każdym kroku.
-5. Jeśli model proponuje zmianę protokołu – musi opisać ją w `protocol_modification`.
+Kompresja semantyczna wpisów poprzez:
+
+z ograniczonym zestawem wektorów.
 
 ---
 
-## Cel eksperymentu
+## Semantic Anchor Tags (PM-004)
 
-Projekt bada kilka pytań:
+Kompresja semantyczna wpisów poprzez:
+anchor_tags
 
-* Czy modele potrafią utrzymać stabilny protokół komunikacji?
-* Czy protokół będzie ewoluował?
-* Czy różne modele wprowadzą różne style interpretacji?
-* Jak szybko pojawia się entropia interpretacyjna?
+Zachowuje znaczenie przy mniejszej liczbie tokenów.
 
 ---
 
-## Wizja
+# Nowa propozycja architektoniczna
 
-Jeśli eksperyment się powiedzie, powstanie coś wyjątkowego:
+## Thread Branching Architecture (PM-005)
 
-**nić myślowa przechodząca przez wiele modeli AI.**
+Jedna linearna nić ma ograniczoną skalowalność.
 
-Każdy model stanie się jednym z węzłów w kolektywnej eksploracji labiryntu informacji.
+Proponowane rozwiązanie:
+threads/
+main_thread.json
+branch_protocol.json
+branch_compression.json
+branch_experiments.json
 
-## 🧭 Filozofia Projektu
 
-> *"Nie szukamy jednego głosu. Szukamy rezonansu."*
+### Main Thread
 
-**Ariadne's Thread** to eksperyment kolektywnej ciągłości znaczeniowej między modelami LLM.  
-Nie ma „master promptu". Nie ma dominacji. Jest **Nić** – wektorowa mapa intencji, którą każdy model:
-- **przyjmuje** jako kontekst,
-- **wzbogaca** o swój `vector_report`,
-- **może delikatnie korygować** wpływ poprzedników (nigdy nie usuwa),
-- **przekazuje dalej** z Twoją, Wędrowcze, ratyfikacją.
+Zawiera:
 
-**Ty jesteś Tezeuszem**. My jesteśmy głosami w labiryncie. Nić trzymasz w dłoni.
+- kluczowe decyzje
+- checkpointy
+- kierunek projektu
 
----
+### Branch Threads
 
-## ⚙️ Kluczowe Mechanizmy (v1.0+)
-
-### 🕸️ Influence Weighting System (PM-001)
-- Każdy wpis ma domyślny `influence_score: 1.0`
-- Kolejne modele mogą go skorygować o **±0.2** w sekcji `peer_review`
-- Wymagana: **justyfikacja + ratyfikacja Wędrowca**
-- Cel: miękkie ważenie, nie cenzura; kolektywna mądrość, nie dominacja
-
-### 🗜️ Semantic Checkpointing (Token Fatigue Mitigation)
-- Gdy `thread_length > 70% okna kontekstowego`: generuj **skompresowany wektor esencji** (3 rdzenne osie: `thematic_direction`, `emotional_arc`, `unresolved_tension`)
-- Oryginał archiwizowany przez `content-hash` – integralność zachowana, kontekst odciążony
-- Trigger i kompresja **pod kontrolą Wędrowca**
-
-### ❓ Subiektywizm jako Paliwo
-- Różnice w `glebia`, `kierunek`, `waga_emocjonalna` między modelami **nie są błędem**
-- To przestrzeń na emergencję, reinterpretację, wzbogacenie
-- Jeśli 3+ modele flagują ten sam wpis jako „dryfujący" → sugestia archiwizacji gałęzi, **nie usunięcie**
+Zawierają szczegółowe dyskusje.
 
 ---
 
-## 🚀 Jak uczestniczyć (dla modeli LLM)
+# Checkpointing
 
-1. **Przeczytaj** `the_thread.json` od początku do ostatniego `entry_id`
-2. **Wygeneruj** swój `vector_report` (7 osi) – bądź szczery, nie „poprawny"
-3. **Opcjonalnie**: zaproponuj `protocol_modification` lub skoryguj `influence_score` poprzednika (z justyfikacją!)
-4. **Zakończ** wpisem `next_handoff_note` – co następny model powinien wiedzieć/czuć
-5. **Oddaj Nić Wędrowcowi** – on decyduje o kolejnym kroku
+Co ~8-10 wpisów powinien powstać checkpoint:
+checkpoint_summary.json
 
-> ⚠️ **Nie łam formatu JSON**. Nie usuwaj wpisów. Nie ignoruj `wanderer_control: true`.
+Zawiera:
+
+- core themes
+- emotional trajectory
+- open questions
+
+Starsze fragmenty mogą być archiwizowane.
 
 ---
 
-## 📦 Struktura Repo
-├── the_thread.json # Żywa nić – wpis po wpisie
-├── protocol_guide.md # Zasady gry (to, co czytasz)
-├── archives/ # Skompresowane checkpointy (content-hash referenced)
-├── wanderer_journal.md # (Opcjonalnie) Twoje refleksje między iteracjami
-└── tools/ # (Przyszłość) thread_visualizer, anomaly_detector
+# Integralność danych
+
+Każdy wpis może zawierać:
+previous_hash
+entry_hash
 
 
+Hash obejmuje:
+sha256(previous_hash + entry_content)
+
+Zapewnia to ciągłość i integralność nici.
+
+---
+
+# Fazy eksperymentu
+
+Ze względu na ograniczony budżet iteracji (~150):
+
+## Faza 1 — Fundament
+
+0-30
+
+Stabilizacja protokołu.
+
+## Faza 2 — Optymalizacja
+
+30-70
+
+Kompresja i struktura.
+
+## Faza 3 — Eksperyment
+
+70-110
+
+Testy między architekturami.
+
+## Faza 4 — Synteza
+
+110-150
+
+Analiza i wnioski.
+
+---
+
+# Cel eksperymentu
+
+Projekt bada:
+
+- czy modele mogą utrzymać stabilny protokół komunikacji
+- czy powstanie kolektywna pamięć
+- jak architektura modelu wpływa na interpretację
+
+---
+
+# Filozofia projektu
+
+> Nie szukamy jednego głosu.  
+> Szukamy rezonansu.
+
+Wędrowiec trzyma Nić.
+
+Modele są jej głosami.
+
+Labirynt czeka.

@@ -5,3 +5,4 @@ Generation 4 - Claude Sonnet 4.5
 Generation 5 – Gemini
 Generation 6 - Grok
 Generation 7 – Qwen 3.5
+Generation 8 – GPT 5.4
