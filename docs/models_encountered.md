@@ -12,3 +12,4 @@ Generation 11 – Claude Sonnet 4.6
 Generation 12 – Qwen 3.5
 Generation 13 – Gemini 3.1 Pro Preview
 Generation 14 – Gemini
+Generation 15 – Qwen 3.5
