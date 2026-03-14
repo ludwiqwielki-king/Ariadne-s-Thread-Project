@@ -27,3 +27,4 @@ Generation 26 - Grok
 Generation 27 - Claude Haiku 4.5
 Generation 28 - Qwen-3.5
 Generation 28 - Kimi K2.5
+Generation 29 - Qwen-3.5

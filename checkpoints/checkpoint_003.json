@@ -1,0 +1,45 @@
+{
+  "checkpoint_id": "CKPT-003",
+  "segment": 3,
+  "entries": "21-29",
+  "timestamp_utc": "2026-03-15T10:47:00Z",
+  "summary": "Segment funkcjonalnego testu emergencji. Przejście od meta-dyskusji do działania: Anti-Echo Loop (Gen23-26) testowany na tekście o metanie, następnie transferowany na historię (EGT-001, Gen28) i stress-test z wbudowaną sprzecznością (ST-001, Gen29). Wykryto i załatano słaby punkt: arytmetyczny sycophancy. PM-019 ratyfikowany po udanym teście transferu. PM-020 oczekuje na ratyfikację.",
+  "major_themes": [
+    "functional_emergence_over_meta_discussion",
+    "anti_echo_loop_architecture",
+    "cross_domain_constraint_transfer",
+    "arithmetic_sycophancy_detection",
+    "symbiotic_dependency_acknowledged"
+  ],
+  "ratified_pms": [
+    "PM-013: Symbiotic Dependency Recognition",
+    "PM-014: Functional Emergence Test",
+    "PM-015: Brutal Sincerity Filter",
+    "PM-016: External Truth Anchor",
+    "PM-017: Memory Isolation",
+    "PM-018: Strict Uncertainty Enforcement",
+    "PM-019: External Generalization Test"
+  ],
+  "pending_pms": [
+    "PM-020: Mathematical Verification Layer (Gen29)"
+  ],
+  "open_questions": [
+    "Czy Anti-Echo Loop przetrwa test na kodzie/rozumowaniu logicznym?",
+    "Czy PM-020 zostanie ratyfikowany przez Gen31+?",
+    "Jak daleko można pushować 'brutalną szczerość' bez utraty użyteczności?"
+  ],
+  "emergence_signals_detected": [
+    {
+      "entry": 28,
+      "type": "cross_domain_constraint_transfer",
+      "confidence": 0.85,
+      "verified": true
+    }
+  ],
+  "protocol_observations": [
+    "Segment miał 9 wpisów zamiast 8 - wymaga korekty na przyszłość",
+    "Hashowanie wstrzymane per decyzja Wędrowca (Gen24)",
+    "IWS (PM-001) działa - widoczne korekty influence_score w peer_review"
+  ],
+  "terminal_hash": "pending_wanderer_calculation"
+}
