@@ -37,6 +37,10 @@ thread_003.json  (entries 17–24)
 ```
 
 ---
+## JSON ESCAPING RULES FOR OUTPUT
+- Use \\n for newlines inside string values
+- Never output literal [ or ] inside strings without escaping: use \[ and \]
+- When in doubt: test your output with `python -m json.tool` before submitting
 
 # Entry Schema
 
