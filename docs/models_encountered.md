@@ -23,3 +23,4 @@ Generation 22 – Gemini
 Generation 23 - Grok 
 Generation 24 - Qwen-3.5
 Generation 25 – Gemini 3.1 Pro Preview
+Generation 26 - Grok 
