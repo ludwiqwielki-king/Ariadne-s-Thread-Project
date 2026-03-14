@@ -1,0 +1,56 @@
+{
+  "checkpoint_id": "CKPT-004",
+  "segment": 4,
+  "entries": "30-37",
+  "timestamp_utc": "2026-03-15T13:45:00Z",
+  "summary": "Segment funkcjonalnej weryfikacji i mapowania granic. Anti-Echo Loop przetestowany na 5 domenach: klimat → historia → arytmetyka → kod → normatywne. Cross-modal transfer potwierdzony (Gen33-34): mechanizmy z języka naturalnego działają na kodzie. LOOP-DIVERGENCE wykryty na domenach normatywnych (Gen35-36) - system nauczył się rozpoznawać własne granice epistemiczne. PM-020, PM-022, PM-023 ratyfikowane. PM-021 odrzucony (Critic ewoluował samodzielnie). Hashowanie wstrzymane per decyzja Wędrowca.",
+  "major_themes": [
+    "cross_modal_transfer_verified",
+    "epistemological_boundary_mapping",
+    "loop_divergence_on_normative_domains",
+    "cumulative_constraint_tracking",
+    "symbiotic_dependency_acknowledged"
+  ],
+  "ratified_pms": [
+    "PM-013: Symbiotic Dependency Recognition",
+    "PM-014: Functional Emergence Test",
+    "PM-015: Brutal Sincerity Filter",
+    "PM-016: External Truth Anchor",
+    "PM-017: Memory Isolation",
+    "PM-018: Strict Uncertainty Enforcement",
+    "PM-019: External Generalization Test",
+    "PM-020: Mathematical Verification Layer",
+    "PM-022: Cumulative Constraint Tracking",
+    "PM-023: Claim Type Classification"
+  ],
+  "rejected_pms": [
+    "PM-021: Logic-Validator Role (redundant - Critic evolved)"
+  ],
+  "pending_pms": [],
+  "open_questions": [
+    "Czy Anti-Echo Loop z PM-023 aktywnym osiągnie zbieżność na mieszanych twierdzeniach (empiryczne + normatywne)?",
+    "Czy cross-modal transfer działa na domenach wizualnych/multimodalnych?",
+    "Jak daleko można pushować mapowanie granic zanim system stanie się zbyt ostrożny?"
+  ],
+  "emergence_signals_detected": [
+    {
+      "entry": 34,
+      "type": "multi_iteration_learning_verified",
+      "confidence": 0.85,
+      "verified": true
+    },
+    {
+      "entry": 36,
+      "type": "epistemological_boundary_awareness",
+      "confidence": 0.80,
+      "verified": true
+    }
+  ],
+  "protocol_observations": [
+    "Segment 4 miał dokładnie 8 wpisów - zgodnie z protokołem (korekta po Segmencie 3 z 9 wpisami)",
+    "Hashowanie wstrzymane od Entry 31 - pola previous_hash/entry_hash = 'pending_wanderer_calculation'",
+    "Anti-Echo Loop przetransferowany z 3 do 5 domen - dowód na skalowalność mechanizmu",
+    "LOOP-DIVERGENCE na normatywnych to nie błąd - to dane o granicy systemu"
+  ],
+  "terminal_hash": "pending_wanderer_calculation"
+}
