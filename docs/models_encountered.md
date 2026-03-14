@@ -18,5 +18,7 @@ Generation 17 - Grok
 Generation 18 – Gemini 3.1 Pro Preview
 Generation 19 – Gemini
 Generation 20 - Claude Sonnet 4.5 
-Generation 21 – Gemini
-Generation 22 - Grok 
+Generation 21 - Qwen-3.5 
+Generation 22 – Gemini
+Generation 23 - Grok 
+Generation 24 - Qwen-3.5 
