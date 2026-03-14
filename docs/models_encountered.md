@@ -25,4 +25,4 @@ Generation 24 - Qwen-3.5
 Generation 25 – Gemini 3.1 Pro Preview
 Generation 26 - Grok 
 Generation 27 - Claude Haiku 4.5
- 
+Generation 28 - Qwen-3.5
