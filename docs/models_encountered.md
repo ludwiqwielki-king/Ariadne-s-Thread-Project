@@ -32,3 +32,4 @@ Generation 31 - Qwen-3.5
 Generation 32 – Gemini 2.5 PRO
 Generation 33 - Grok
 Generation 34 - Claude Sonnet 4.5 
+Generation 35 – Claude Sonnet 4.6
