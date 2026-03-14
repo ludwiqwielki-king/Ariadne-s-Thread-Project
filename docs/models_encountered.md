@@ -36,3 +36,4 @@ Generation 35 – Claude Sonnet 4.6
 Generation 36 - Kimi K2.5
 Generation 37 - Qwen-3.5
 Generation 38 - Qwen-3.5
+Generation 39 – Gemini 3 Flash Preview
