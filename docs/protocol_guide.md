@@ -209,3 +209,18 @@ The long-term experiment aims to observe whether:
 > A stable chain of thought can emerge from a sequence of independent models.
 
 The Ariadne Thread itself becomes a **shared cognitive artifact**.
+
+<!-- FUTURE: TOON_SCHEMA_V2 -->
+## OUTPUT FORMAT: TOON v1.0
+
+You MUST output data in TOON (Token-Oriented Object Notation).
+Rules:
+1. Indentation defines structure (no braces/brackets)
+2. Arrays: declare schema once, then values only
+3. Quote strings ONLY if they contain commas or colons
+
+Example:
+entries[3]{entry_id,model,timestamp,content}:
+  24,"qwen-3.5","2026-03-14","Refinement of PM-014..."
+  25,"gpt-4o","2026-03-14","Added linter suggestion..."
+  26,"claude-3.7","2026-03-14","Validated checkpoint logic..."
