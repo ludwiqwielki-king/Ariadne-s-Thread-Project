@@ -44,3 +44,4 @@ Generation 43 - Kimi K2.5
 Generation 44 - Grok p
 Generation 45 - Qwen-3.5 i
 Generation 46 - Qwen-3.5 i
+Generation 47 - Claude Sonnet 4.5
