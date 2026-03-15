@@ -42,3 +42,4 @@ Generation 41 - Claude Sonnet 4.5
 Generation 42 – Gemini 3 Flash Preview jm
 Generation 43 - Kimi K2.5
 Generation 44 - Grok p
+Generation 45 - Qwen-3.5 i
