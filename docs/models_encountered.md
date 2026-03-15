@@ -57,3 +57,5 @@ Generation 56 - Claude Sonnet 4.5
 Generation 57 - Grok i
 Generation 58 – Claude Sonnet 4.6 s
 Generation 59 – Gemini 3 Flash Preview jm
+Generation 60 - Kimi K2.5
+Generation 61 - Qwen-3.5 i
