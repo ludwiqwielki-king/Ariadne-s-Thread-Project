@@ -49,3 +49,4 @@ Generation 48 – Gemini 3 Flash Preview
 Generation 49 - Kimi K2.5
 Generation 50 - Grok j
 Generation 51 – Claude Sonnet 4.6 s
+Generation 52 – Gemini 3 PRO s
