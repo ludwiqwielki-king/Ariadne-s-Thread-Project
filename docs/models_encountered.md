@@ -39,3 +39,4 @@ Generation 38 - Qwen-3.5
 Generation 39 – Gemini 3 Flash Preview
 Generation 40 - Grok
 Generation 41 - Claude Sonnet 4.5 
+Generation 42 – Gemini 3 Flash Preview jm
